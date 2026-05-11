@@ -9,7 +9,7 @@ public class SimpleWebServer {
     static String homePage = "index.html";
 
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(80);
+        ServerSocket serverSocket = new ServerSocket(8080);
         System.out.println("Server läuft auf http://localhost");
 
         while (true) {
