@@ -6,6 +6,43 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Hallo Welt</h1>
+      <h1>Hallo Welt</h1>
+
+      <input id="username" />
+      <button onclick="addUser()">Add</button>
+
+      <ul id="userList"></ul>
+
+      <script>
+          async function addUser() {
+              const input = document.getElementById("username");
+              const name = input.value;
+
+              // check if empty or only spaces
+              if (!name || name.trim() === "") {
+                  alert("Please enter a username");
+                  input.focus(); // cursor back in the textbox
+                  return; // stop
+              }
+
+              // only runs if valid
+              await fetch("/users", {
+                  method: "POST",
+                  body: name
+              });
+
+              input.value = ""; // clear textbox
+              loadUsers();
+          }
+
+          async function loadUsers() {
+              const res = await fetch("/users");
+              const users = await res.json();
+              document.getElementById("userList").innerHTML =
+                  users.map(u => `<li>${u.name}</li>`).join("");
+          }
+
+          loadUsers();
+      </script>
   </body>
 </html>
