@@ -107,8 +107,3 @@ curl -X POST http://localhost:8080/users -d "Alice"
 * Daten in Datei oder Datenbank speichern
 * Fehlerbehandlung
 ---
-
-## Autoren
-
-* Dein Name
-* Name des Projektpartners
